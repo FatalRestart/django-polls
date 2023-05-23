@@ -16,35 +16,60 @@ class Choice(models.Model):
 
 
 class Usuario(models.Model):
-nome = models.CharField(max_length=50)
-nickname = models.CharField(max_length=100, unique=True)
-avatar = models.CharField(max_length=255, null=True)
+    nome = models.CharField(max_length=50)
+    nickname = models.CharField(max_length=100, unique=True)
+    avatar = models.CharField(max_length=255, null=True)
 
 def __str__(self):
-return self.nome
+    return self.nome
 
 
 class Questionario(models.Model):
-titulo = models.CharField(max_length=100)
-descricao = models.CharField(max_length=500, null=True)
-data_criacao = models.DateTimeField(auto_now_add=True)
-capa = models.CharField(max_length=255, null=True)
-usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=100)
+    descricao = models.CharField(max_length=500, null=True)
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    capa = models.CharField(max_length=255, null=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
 def __str__(self):
-return self.titulo
+    return self.titulo
 
 
 class Hashtag(models.Model):
-tag = models.CharField(max_length=100, unique=True)
+    tag = models.CharField(max_length=100, unique=True)
 
 def __str__(self):
-return self.tag
+    return self.tag
 
 
 class HashtagHasQuestionario(models.Model):
-hashtag = models.ForeignKey(Hashtag, on_delete=models.CASCADE)
-questionario = models.ForeignKey(Questionario, on_delete=models.CASCADE)
+    hashtag = models.ForeignKey(Hashtag, on_delete=models.CASCADE)
+    questionario = models.ForeignKey(Questionario, on_delete=models.CASCADE)
 
 def __str__(self):
-return f"{self.hashtag} - {self.questionario}"
+    return f"{self.hashtag} - {self.questionario}"
+
+from django.db import models
+
+
+class Question(models.Model):
+    # ...
+    def __str__(self):
+        return self.question_text
+
+
+class Choice(models.Model):
+    # ...
+    def __str__(self):
+        return self.choice_text
+
+import datetime
+
+from django.db import models
+from django.utils import timezone
+
+
+class Question(models.Model):
+    # ...
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
