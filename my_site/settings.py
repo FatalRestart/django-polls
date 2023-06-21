@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s1uscv6vzilba6)^=8sowslz=!#h+m$cjj0_+u_*hz&*o4*-k2'
+SECRET_KEY = 'django-insecure-$isfx7hnh8rr!fe17u%4$#5yd^$l4%&fc@*7z^e%+8+806@!w+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
+    "polls.apps.PollsConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,6 +84,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -106,9 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -124,37 +125,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-from polls.models import Choice, Question  # Import the model classes we just wrote.
-
-# No questions are in the system yet.
->>> Question.objects.all()
-<QuerySet []>
-
-# Create a new Question.
-# Support for time zones is enabled in the default settings file, so
-# Django expects a datetime with tzinfo for pub_date. Use timezone.now()
-# instead of datetime.datetime.now() and it will do the right thing.
->>> from django.utils import timezone
->>> q = Question(question_text="What's new?", pub_date=timezone.now())
-
-# Save the object into the database. You have to call save() explicitly.
->>> q.save()
-
-# Now it has an ID.
->>> q.id
-1
-
-# Access model field values via Python attributes.
->>> q.question_text
-"What's new?"
->>> q.pub_date
-datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=datetime.timezone.utc)
-
-# Change values by changing the attributes, then calling save().
->>> q.question_text = "What's up?"
->>> q.save()
-
-# objects.all() displays all the questions in the database.
->>> Question.objects.all()
-<QuerySet [<Question: Question object (1)>]>
-
