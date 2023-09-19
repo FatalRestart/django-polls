@@ -16,6 +16,9 @@
     
     </header>
     <main class="texto">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
         {% block content %}{% endblock content %}
     </main>
     <footer>Rodapé</footer>
