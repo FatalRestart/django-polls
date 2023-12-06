@@ -1,55 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
 *{margin: 0;padding: 0;    
 ;font-size: 20px;font-family: Verdana, Geneva, Tahoma, sans-serif;}
-body{
-    background-color: rgb(221, 255, 243);
-    overflow-x: hidden;
-}
-h1{
-    font-size: 30px;
-    font-family: 'Barriecito', cursive;
-}
-header{
-    width: 100vw;
-    height: 150px;
-    background-color: rgb(30, 131, 121);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
-    gap: 20px;
-    color: #FFF;
-
-}
-header img{
-    height: 100%;
+body {
+    background-color: rgb(148, 105, 48);
 }
 
-header a{
-    color: #ABFFEB;
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 5px 0;
-    background-color: rgb(23, 97, 89);
-    border-radius: 20px;
+.texto{
+    color: white;
 }
-.account{
-    display: flex;
-    flex-direction: column;
+
+.tecsto{
+    border: 5px solid white;
+    background-color: black;
+
+}
+
+.ado{
+    width: 75%;
+    height: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alinha{
     text-align: center;
-    margin-right: 10%;
-}
-
-main{
-    width: 80%;
-    margin: 30px auto;
-    min-height: 100vh;
-}
-
-ul{
-    list-style: none;
-}
-
 li{
     padding: 20px 35px;
     background-color: rgb(174, 226, 217);
