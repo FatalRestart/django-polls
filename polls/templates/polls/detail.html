@@ -1,20 +1,18 @@
 {% extends "polls/base.html" %}
 
-{% block title %} Detalhes da Enquete{% endblock title %}
+{% block title %}Detalhes da Enquete{% endblock title %}
 
 {% block content %}
 
-    <h1>{{ question.question_text }}</h1>
 
     <ul>
     {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }}</li>
     {% endfor %}
     </ul>
 
-    <a href="{ url 'index' %}">Página inicial</a>
+    <a href="{% url 'index' %}">Página Inicial</a>
 
-    <form action="{% url 'polls:vote' question.id %}" method="post">
+    <form action="{% url 'vote' question.id %}" method="post">
         {% csrf_token %}
         <fieldset>
             <legend><h1>{{ question.question_text }}</h1></legend>
@@ -27,4 +25,4 @@
         <input type="submit" value="Vote">
         </form>
 
-{% endblock content %}
+{% endblock %}

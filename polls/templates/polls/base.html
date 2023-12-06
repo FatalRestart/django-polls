@@ -1,27 +1,45 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} App. de Enquetes{% endblock %}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}App. de enquetes{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+    </head>
 
-    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
-</head>
-<body>
-    <header class=" alinha">
-        <h1 class="texto tecsto alinha">Kanye do Oeste quer saber</h1>
-        <img src="{% static 'polls/img/teste1.jpg' %}" class="ado alinha">
-    
-    </header>
-    <main class="texto">
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
-        {% block content %}{% endblock content %}
-    </main>
-    <footer>Rodapé</footer>
-    
-</body>
+    <body>
+        <header>
+            <img src="{% static 'polls/img/a.png' %}" alt="">
+            {% if not user.is_authenticated %}
+            <div class="account">
+                <a class="p-2 text-dark" href="{% url 'signup' %}">Cadastrar</a>
+                <a class="p-2 text-dark" href="{% url 'login' %}">Acessar</a>
+            </div>
+            {% else %}
+            <div class="account">
+                <a class="p-2 text-dark" href="{% url 'account_edit' pk=user.pk %}">Minha conta</a>
+                <a class="p-2 text-dark" href="{% url 'logout' %}">Sair</a>
+            </div>
+            {% endif %}
+        </header>
+
+        <main>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+
+            {% block content %}{% endblock content %}
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>E depois vai contar tudo pra Evelin</p>
+                <p>E pra Mayara</p>
+                <p>E pra Inae</p>
+                <p>E não vai me contar nada!</p>
+            </div>
+        </footer>
+    </body>
 </html>
